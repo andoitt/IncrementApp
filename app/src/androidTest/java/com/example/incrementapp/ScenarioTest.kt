@@ -54,6 +54,7 @@ class ScenarioTest {
         scenarioRule.scenario.recreate()
         checkStateFinishState()
 
+
         //3
         clickReset()
         checkStateInitшal()
