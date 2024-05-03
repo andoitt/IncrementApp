@@ -16,6 +16,7 @@ import org.junit.Rule
  * 1.click Increment
  * check state - incrementStart
  * 2.click Increment 10 times
+ * check state - incrementStart
  * check state - Finish state
  * 3.click reset
  * check state - Initial state
@@ -25,11 +26,13 @@ class ScenarioTest {
 
     @get: Rule
     val scenarioRule = ActivityScenarioRule(MainActivity::class.java)
+
     @Test
     fun funCaseNumberOne() {
-        val incrementPage = IncrementPage()
+        var incrementPage = IncrementPage()
 
-       checkStateInital()
+        checkStateInitial()
+        scenarioRule.scenario.recreate()
 
 
         //1
@@ -39,19 +42,24 @@ class ScenarioTest {
         checkStateIncrementStart()
 
         //2
-        repeat(10){
+        repeat(9) {
             clickIncrement()
-            checkStateFinishState()
+            checkStateIncrementStart()
             scenarioRule.scenario.recreate()
-            checkStateFinishState()
+            checkStateIncrementStart()
+
         }
+
+        checkStateFinishState()
+        scenarioRule.scenario.recreate()
+        checkStateFinishState()
 
         //3
         clickReset()
-        checkStateInital()
+        checkStateInitшal()
         scenarioRule.scenario.recreate()
-        checkStateInital()
-
-
+        checkStateInitial()
     }
+
+
 }
