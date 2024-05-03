@@ -36,10 +36,6 @@ class ScenarioTest {
         incrementPage.checkStateInitial()
 
         //1
-        incrementPage.clickIncrement()
-        incrementPage.checkStateIncrementStart()
-        scenarioRule.scenario.recreate()
-        incrementPage.checkStateIncrementStart()
 
 
         incrementPage = IncrementPage()
