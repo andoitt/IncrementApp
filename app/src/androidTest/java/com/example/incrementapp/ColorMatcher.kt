@@ -8,7 +8,7 @@ import org.hamcrest.Description
 import org.hamcrest.Matcher
 
 
-fun withTextColor(expectedId: Int): ViewAssertion? {
+fun withTextColor(expectedId: Int): Matcher<in View>? {
     return object : BoundedMatcher<View?, TextView>(TextView::class.java) {
         override fun matchesSafely(textView: TextView): Boolean {
             return expectedId == textView.currentTextColor
