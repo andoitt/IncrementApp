@@ -33,6 +33,7 @@ class ScenarioTest {
 
         checkStateInitial()
         scenarioRule.scenario.recreate()
+        checkStateInitial()
 
 
         //1
@@ -43,16 +44,27 @@ class ScenarioTest {
 
         //2
         repeat(9) {
-            clickIncrement()
-            checkStateIncrementStart()
-            scenarioRule.scenario.recreate()
-            checkStateIncrementStart()
+            val currentText = "${it + 1}"
+            if (it == 1-9) {
+                gamePage.checkStateIncrement(text = currentText)
+                scenarioRule.scenario.recreate()
+                gamePage.checkStateIncrement(text = currentText)
+            } else if (it == 0){
+                gamePage.checkStateInitial(text = currentText)
+                scenarioRule.scenario.recreate()
+                gamePage.checkStateInitial(text = currentText)
+            } else {
+                gamePage.checkStateFinish(text = currentText)
+                scenarioRule.scenario.recreate()
+                gamePage.checkStateFinish(text = currentText)
+            }
+
 
         }
 
-        checkStateFinishState()
+        checkStateFinish()
         scenarioRule.scenario.recreate()
-        checkStateFinishState()
+        checkStateFinish()
 
 
         //3
@@ -61,6 +73,5 @@ class ScenarioTest {
         scenarioRule.scenario.recreate()
         checkStateInitial()
     }
-
 
 }
