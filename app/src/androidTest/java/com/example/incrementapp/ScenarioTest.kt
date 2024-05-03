@@ -46,11 +46,11 @@ class ScenarioTest {
 
         //2
         repeat(9) {
-            incrementPage.gamePage.clickIncrement()
+            incrementPage.clickIncrement()
             val currentText = "${it + 1}"
-            incrementPage.gamePage.checkStateIncrement(text = currentText)
-            incrementPage.activityScenarioRule.scenario.recreate()
-            incrementPage.gamePage.checkStateIncrement(text = currentText)
+            incrementPage.checkStateIncrement(text = currentText)
+            activityScenarioRule.scenario.recreate()
+            incrementPage.checkStateIncrement(text = currentText)
         }
 
         incrementPage = IncrementPage()
