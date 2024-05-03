@@ -22,7 +22,6 @@ class CustomTextView : androidx.appcompat.widget.AppCompatTextView {
 
 
 interface TextAction {
-    fun updateUiState() : TextUiState {
+    fun updateUiState()
 
-    }
 }
