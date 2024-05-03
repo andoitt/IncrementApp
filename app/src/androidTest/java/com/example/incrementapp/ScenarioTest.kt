@@ -31,47 +31,40 @@ class ScenarioTest {
     fun funCaseNumberOne() {
         var incrementPage = IncrementPage()
 
-        checkStateInitial()
-        scenarioRule.scenario.recreate()
-        checkStateInitial()
+            checkStateInitial()
+            scenarioRule.scenario.recreate()
+            checkStateInitial()
+
+            //1
+            clickIncrement()
+            checkStateIncrementStart()
+            scenarioRule.scenario.recreate()
+            checkStateIncrementStart()
 
 
-        //1
-        clickIncrement()
-        checkStateIncrementStart()
-        scenarioRule.scenario.recreate()
-        checkStateIncrementStart()
+            incrementPage = IncrementPage()
 
-        //2
-        repeat(9) {
-            val currentText = "${it + 1}"
-            if (it == 1-9) {
+            //2
+            repeat(9) {
+                gamePage.clickIncrement()
+                val currentText = "${it + 1}"
                 gamePage.checkStateIncrement(text = currentText)
-                scenarioRule.scenario.recreate()
+                activityScenarioRule.scenario.recreate()
                 gamePage.checkStateIncrement(text = currentText)
-            } else if (it == 0){
-                gamePage.checkStateInitial(text = currentText)
-                scenarioRule.scenario.recreate()
-                gamePage.checkStateInitial(text = currentText)
-            } else {
-                gamePage.checkStateFinish(text = currentText)
-                scenarioRule.scenario.recreate()
-                gamePage.checkStateFinish(text = currentText)
             }
 
+            incrementPage = IncrementPage()
 
+            checkStateFinish()
+            scenarioRule.scenario.recreate()
+            checkStateFinish()
+
+
+            //3
+            clickReset()
+            checkStateInitшal()
+            scenarioRule.scenario.recreate()
+            checkStateInitial()
         }
-
-        checkStateFinish()
-        scenarioRule.scenario.recreate()
-        checkStateFinish()
-
-
-        //3
-        clickReset()
-        checkStateInitшal()
-        scenarioRule.scenario.recreate()
-        checkStateInitial()
-    }
 
 }
