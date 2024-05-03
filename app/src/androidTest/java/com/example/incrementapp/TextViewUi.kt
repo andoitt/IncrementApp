@@ -1,7 +1,9 @@
 package com.example.incrementapp
 
+import android.graphics.Color
 import android.view.View
 import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.isAssignableFrom
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withParent
@@ -23,19 +25,15 @@ class TextViewUi(rootIdMatcher: Matcher<View>, rootClassMatcher: Matcher<View>) 
 
 
     fun Itinital() {
-        TODO("Not yet implemented")
-    }
-
-    fun Finish() {
-        TODO("Not yet implemented")
+        interaction.check(withTextColor(Color.parseColor("#27D959")))
     }
 
     fun IncrementStart() {
-        TODO("Not yet implemented")
+        interaction.check(withTextColor(Color.parseColor("000000")))
     }
 
-
-
-
+    fun Finish() {
+        interaction.check(withTextColor(Color.parseColor("#EB1C1C")))
+    }
 
 }
