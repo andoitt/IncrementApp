@@ -16,7 +16,6 @@ class IncrementButtonUi(rootIdMatcher: Matcher<View>, rootClassMatcher: Matcher<
         allOf(
             withId(R.id.IncrementButton),
             isAssignableFrom(Button::class.java),
-            withParent(withId(R.id.customIncrementButton)),
             rootIdMatcher,
             rootClassMatcher
 

@@ -15,7 +15,6 @@ class TextViewUi(rootIdMatcher: Matcher<View>, rootClassMatcher: Matcher<View>) 
         allOf(
             withId(R.id.textNumber),
             isAssignableFrom(TextInputLayout::class.java),
-            withParent(withId(R.id.customTextView)),
             rootIdMatcher,
             rootClassMatcher
 

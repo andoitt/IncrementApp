@@ -16,7 +16,6 @@ class ResetButtonUI(rootIdMatcher: Matcher<View>, rootClassMatcher: Matcher<View
         allOf(
             withId(R.id.ResetButton),
             isAssignableFrom(Button::class.java),
-            withParent(withId(R.id.customResetButton)),
             rootIdMatcher,
             rootClassMatcher
 
