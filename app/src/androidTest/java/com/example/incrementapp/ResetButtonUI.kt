@@ -26,15 +26,15 @@ class ResetButtonUI(rootIdMatcher: Matcher<View>, rootClassMatcher: Matcher<View
 
         )
     )
-    fun Initial() {
+    fun initial() {
         interaction.check(matches(not(isDisplayed())))
     }
 
-    fun IncrementStart() {
+    fun incrementStart() {
         interaction.check(matches(not(isDisplayed())))
     }
 
-    fun Finish() {
+    fun finish() {
         interaction.check(matches(isEnabled()))
     }
 

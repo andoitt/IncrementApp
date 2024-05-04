@@ -25,16 +25,16 @@ class IncrementButtonUi(rootIdMatcher: Matcher<View>, rootClassMatcher: Matcher<
 
         )
     )
-    fun Initial() {
+    fun initial() {
         interaction.check(matches(isEnabled()))
     }
 
 
-    fun IncrementStart() {
+    fun incrementStart() {
         interaction.check(matches(isEnabled()))
     }
 
-    fun Finish() {
+    fun finish() {
         interaction.check(matches(isDisplayed()))
     }
 

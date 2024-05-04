@@ -1,4 +1,4 @@
-package ru.easycode.intensive2unscramble.views.submit
+package com.example.incrementapp.views.CustomIncrement
 
 import android.content.Context
 import android.os.Parcelable
@@ -6,6 +6,9 @@ import android.util.AttributeSet
 import com.google.android.material.button.MaterialButton
 
 class CustomIncrementButton : MaterialButton, UpdateIncrementButton {
+
+
+    private lateinit var uiState: IncrementUiState
 
     constructor(context: Context) : super(context)
     constructor(context: Context, attributeSet: AttributeSet) : super(context, attributeSet)
@@ -15,26 +18,35 @@ class CustomIncrementButton : MaterialButton, UpdateIncrementButton {
         defStyleAttrs
     )
 
-    override fun changeEnabled(enabled: Boolean) {
-        isEnabled = enabled
-    }
 
     override fun onSaveInstanceState(): Parcelable {
-        super.onSaveInstanceState().let {
-            val state = SubmitButtonSavedState(it)
-            state.save(this)
+        super.onSaveInstanceState().let {superState ->
+            val state = CustomIncrementButtonSavedState(superState)
+            state.save(uiState)
             return state
         }
     }
 
     override fun onRestoreInstanceState(state: Parcelable?) {
-        val restoredState = state as SubmitButtonSavedState
+        val restoredState = state as CustomIncrementButtonSavedState
         super.onRestoreInstanceState(restoredState.superState)
-        restoredState.restore(this)
+        updateUiState(restoredState.restore())
+    }
+
+    override fun updateUiState(outer: IncrementUiState) {
+        uiState = outer
+        uiState.show(this)
+    }
+
+    override fun updateUi(isEnable: Boolean) {
+        this.isEnabled = isEnable
     }
 }
 
 interface UpdateIncrementButton {
 
-    fun changeEnabled(enabled: Boolean)
+    fun updateUiState(outer: IncrementUiState)
+    fun updateUi(isEnable: Boolean)
+
+
 }

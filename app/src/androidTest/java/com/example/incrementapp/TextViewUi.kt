@@ -4,6 +4,7 @@ import android.graphics.Color
 import android.view.View
 import android.widget.TextView
 import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.isAssignableFrom
 import androidx.test.espresso.matcher.ViewMatchers.withId
@@ -25,22 +26,24 @@ class TextViewUi(rootIdMatcher: Matcher<View>, rootClassMatcher: Matcher<View>) 
     )
 
 
-    fun Itinital() {
+    fun initial() {
         interaction
             .check(matches(withTextColor(R.color.green)))
             .check(matches(withText("0")))
     }
 
-    fun IncrementStart() {
+    fun incrementStart() {
         interaction
             .check(matches(withTextColor(R.color.black)))
-            .check(matches(withText(click.toString())))
+            .check(matches(withText(click().toString())))
     }
 
-    fun Finish() {
+    fun finish() {
         interaction
             .check(matches(withTextColor(R.color.red)))
             .check(matches(withText("10")))
     }
+
+
 
 }

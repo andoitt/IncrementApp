@@ -26,9 +26,9 @@ class IncrementPage {
 
 
     fun checkStateInitial() {
-        textView.Itinital()
-        incrementButton.Initial()
-        resetButton.Initial()
+        textView.initial()
+        incrementButton.initial()
+        resetButton.initial()
     }
 
     fun clickIncrement() {
@@ -37,15 +37,15 @@ class IncrementPage {
 
 
     fun checkStateIncrementStart(text: String) {
-        textView.IncrementStart()
-        incrementButton.IncrementStart()
-        resetButton.IncrementStart()
+        textView.incrementStart()
+        incrementButton.incrementStart()
+        resetButton.incrementStart()
     }
 
     fun checkStateFinish() {
-        textView.Finish()
-        incrementButton.Finish()
-        resetButton.Finish()
+        textView.finish()
+        incrementButton.finish()
+        resetButton.finish()
     }
 
     fun clickReset() {
