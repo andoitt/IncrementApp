@@ -3,7 +3,8 @@ package com.example.incrementapp
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.incrementapp.databinding.ActivityMainBinding
-import com.example.incrementapp.views.CustomTextView.CustomTextView
+import com.example.incrementapp.presentation.IncrementViewModel
+import com.example.incrementapp.presentation.UiState
 
 class MainActivity : AppCompatActivity() {
 
@@ -13,44 +14,39 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.rootLayout)
 
 
-        val viewModel: MainViewModel = (application as App).viewModel
+        lateinit var uiState: UiState
+
+        val viewModel: IncrementViewModel = (application as IncrementApp).viewModel
 
         binding.incrementButton.setOnClickListener {
-            val uiState: Uistate = viewModel.increment()
+            uiState = viewModel.increment()
             uiState.update(
-                binding.incrementButton,
-                binding.resetButton,
-                binding.textNumber
+               updateIncrement = binding.incrementButton,
+               updateReset = binding.resetButton,
+               updateNumberTextView = binding.textNumber
             )
-            updateCustomTextView(binding.textNumber, viewModel.getCurrentNumber())
+
         }
 
         binding.resetButton.setOnClickListener {
-            val uiState: Uistate = viewModel.reset()
+            uiState = viewModel.reset()
             uiState.update(
-                binding.incrementButton,
-                binding.resetButton,
-                binding.textNumber
+                updateIncrement = binding.incrementButton,
+                updateReset = binding.resetButton,
+                updateNumberTextView = binding.textNumber
             )
-            updateCustomTextView(binding.textNumber, viewModel.getCurrentNumber())
 
         }
 
-        updateCustomTextView(binding.textNumber, viewModel.getCurrentNumber())
 
-
-
-        val uiState: Uistate = viewModel.init(savedInstanceState == null)
+        uiState = viewModel.init(firstTime = savedInstanceState == null)
         uiState.update(
-            binding.incrementButton,
-            binding.resetButton,
-            binding.textNumber
+            updateIncrement = binding.incrementButton,
+            updateReset = binding.resetButton,
+            updateNumberTextView = binding.textNumber
         )
     }
 
-    private fun updateCustomTextView(customTextView: CustomTextView, value: Int) {
-        customTextView.text = value.toString()
-    }
 
 }
 
