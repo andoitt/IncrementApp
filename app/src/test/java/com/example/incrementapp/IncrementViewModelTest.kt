@@ -1,5 +1,6 @@
 package com.example.incrementapp
 
+import com.example.incrementapp.data.Repository
 import com.example.incrementapp.presentation.IncrementViewModel
 import com.example.incrementapp.presentation.UiState
 import org.junit.Test
@@ -14,6 +15,7 @@ class IncrementViewModelTest {
     fun caseNumberOne() {
 
         val viewModel: IncrementViewModel = IncrementViewModel()
+        lateinit var repository: FakeRepository
 
         var actual: UiState = viewModel.init(firstTime = true)
         var expected: UiState = UiState.Initial
@@ -34,4 +36,13 @@ class IncrementViewModelTest {
         expected = UiState.Initial
         assertEquals(expected, actual)
     }
+}
+
+class FakeRepository: Repository {
+
+    private var counter: Int = 0
+
+
+
+
 }
