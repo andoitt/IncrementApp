@@ -1,17 +1,29 @@
 package com.example.incrementapp.presentation
 
-class IncrementViewModel {
+import com.example.incrementapp.data.Repository
 
-    fun init(firstTime: Boolean): UiState {
-        TODO("Not yet implemented")
+class IncrementViewModel(
+    private val repository: Repository
+) {
+
+    fun init(firstTime: Boolean = true): UiState {
+        return if (firstTime)
+            UiState.Initial
+        else
+            UiState.Empty
     }
 
     fun increment(): UiState {
-        TODO("Not yet implemented")
+        repository.increment()
+        return if (repository.isMax())
+            UiState.Finish
+        else
+            UiState.IncrementStart(repository.getIncrement())
     }
 
     fun reset(): UiState {
-        TODO("Not yet implemented")
+        repository.reset()
+        return UiState.Initial
     }
 
 }

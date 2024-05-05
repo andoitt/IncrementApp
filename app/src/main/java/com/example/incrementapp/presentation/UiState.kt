@@ -9,6 +9,7 @@ interface UiState {
         updateIncrement: CustomIncrementButton,
         updateReset: CustomResetButton,
         updateNumberTextView: CustomTextView
+
     )
 
 
@@ -24,6 +25,7 @@ interface UiState {
     }
 
     object Initial : UiState {
+
         override fun update(
             updateIncrement: CustomIncrementButton,
             updateReset: CustomResetButton,
@@ -31,6 +33,7 @@ interface UiState {
         ) {
             TODO("Not yet implemented")
         }
+
 
     }
 

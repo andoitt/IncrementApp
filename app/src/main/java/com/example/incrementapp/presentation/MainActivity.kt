@@ -1,10 +1,9 @@
-package com.example.incrementapp
+package com.example.incrementapp.presentation
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.incrementapp.IncrementApp
 import com.example.incrementapp.databinding.ActivityMainBinding
-import com.example.incrementapp.presentation.IncrementViewModel
-import com.example.incrementapp.presentation.UiState
 
 class MainActivity : AppCompatActivity() {
 
