@@ -37,7 +37,7 @@ class CustomResetButton : MaterialButton, UpdateResetButton {
 
     override fun updateUi(visibility: Boolean) {
 
-        this.visibility = VISIBLE
+        if (isVisible)this.visibility = VISIBLE else this.visibility = INVISIBLE
 
     }
 

@@ -23,8 +23,9 @@ class CustomTextView : androidx.appcompat.widget.AppCompatTextView, UpdateText {
         uiState.show(this)
     }
 
-    override fun updateUi(textID: Int, color: Int) {
-        this.setText(textID)
+    override fun updateUi(incrementValue: Int, color: Int) {
+        this.setText(incrementValue)
+        this.text = incrementValue.toString()
         this.setTextColor(color)
     }
 
@@ -47,7 +48,7 @@ class CustomTextView : androidx.appcompat.widget.AppCompatTextView, UpdateText {
 
 interface UpdateText {
     fun updateUiState(outer: TextUiState)
-    fun updateUi(@StringRes textID: Int, color: Int)
+    fun updateUi(incrementValue: Int, color: Int)
 
 
 }

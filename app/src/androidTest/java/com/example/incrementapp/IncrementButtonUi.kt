@@ -18,7 +18,7 @@ class IncrementButtonUi(rootIdMatcher: Matcher<View>, rootClassMatcher: Matcher<
 
     val interaction = onView(
         allOf(
-            withId(R.id.IncrementButton),
+            withId(R.id.incrementButton),
             isAssignableFrom(Button::class.java),
             rootIdMatcher,
             rootClassMatcher

@@ -19,7 +19,7 @@ class ResetButtonUI(rootIdMatcher: Matcher<View>, rootClassMatcher: Matcher<View
 
     val interaction = onView(
         allOf(
-            withId(R.id.ResetButton),
+            withId(R.id.resetButton),
             isAssignableFrom(Button::class.java),
             rootIdMatcher,
             rootClassMatcher
