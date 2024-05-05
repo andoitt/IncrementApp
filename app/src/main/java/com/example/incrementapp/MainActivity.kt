@@ -1,11 +1,9 @@
 package com.example.incrementapp
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.example.incrementapp.databinding.ActivityMainBinding
+import com.example.incrementapp.views.CustomTextView.CustomTextView
 
 class MainActivity : AppCompatActivity() {
 
@@ -24,6 +22,7 @@ class MainActivity : AppCompatActivity() {
                 binding.resetButton,
                 binding.textNumber
             )
+            updateCustomTextView(binding.textNumber, viewModel.getCurrentNumber())
         }
 
         binding.resetButton.setOnClickListener {
@@ -33,19 +32,11 @@ class MainActivity : AppCompatActivity() {
                 binding.resetButton,
                 binding.textNumber
             )
+            updateCustomTextView(binding.textNumber, viewModel.getCurrentNumber())
+
         }
 
-
-        binding.textNumber.
-
-
-
-        val uiState: Uistate = viewModel.numbersToText()
-        uiState.update(
-            binding.incrementButton,
-            binding.resetButton,
-            binding.textNumber
-        )
+        updateCustomTextView(binding.textNumber, viewModel.getCurrentNumber())
 
 
 
@@ -57,5 +48,10 @@ class MainActivity : AppCompatActivity() {
         )
     }
 
+    private fun updateCustomTextView(customTextView: CustomTextView, value: Int) {
+        customTextView.text = value.toString()
+    }
+
 }
+
 
