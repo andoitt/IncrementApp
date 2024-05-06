@@ -1,8 +1,9 @@
 package com.example.incrementapp.views.CustomTextView
 
 import com.example.incrementapp.R
+import java.io.Serializable
 
-interface TextUiState {
+interface TextUiState : Serializable {
 
     fun show(customTextView: UpdateText)
 

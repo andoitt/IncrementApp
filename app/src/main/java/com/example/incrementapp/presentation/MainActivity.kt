@@ -17,36 +17,32 @@ class MainActivity : AppCompatActivity() {
 
         val viewModel: IncrementViewModel = (application as IncrementApp).viewModel
 
+
+        val showUi: () -> Unit = {
+            uiState.update(
+                incrementButton = binding.incrementButton,
+                resetButton = binding.resetButton,
+                textNumber = binding.textNumber
+
+            )
+        }
+
+
         binding.incrementButton.setOnClickListener {
             uiState = viewModel.increment()
-            uiState.update(
-               updateIncrement = binding.incrementButton,
-               updateReset = binding.resetButton,
-               updateNumberTextView = binding.textNumber
-            )
+            showUi.invoke()
 
         }
 
         binding.resetButton.setOnClickListener {
             uiState = viewModel.reset()
-            uiState.update(
-                updateIncrement = binding.incrementButton,
-                updateReset = binding.resetButton,
-                updateNumberTextView = binding.textNumber
-            )
-
+            showUi.invoke()
         }
 
 
         uiState = viewModel.init(firstTime = savedInstanceState == null)
-        uiState.update(
-            updateIncrement = binding.incrementButton,
-            updateReset = binding.resetButton,
-            updateNumberTextView = binding.textNumber
-        )
+        showUi.invoke()
     }
-
-
 }
 
 

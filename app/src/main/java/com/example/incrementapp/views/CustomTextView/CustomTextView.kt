@@ -30,8 +30,8 @@ class CustomTextView : androidx.appcompat.widget.AppCompatTextView, UpdateText {
     }
 
 
-    override fun onSaveInstanceState(): Parcelable {
-        super.onSaveInstanceState().let {
+    override fun onSaveInstanceState(): Parcelable? {
+       return super.onSaveInstanceState()?.let { superState ->
             val state = CustomTextViewSavedState(superState)
             state.save(uiState)
             return state
