@@ -15,7 +15,7 @@ import org.hamcrest.Matchers.allOf
 
 class TextViewUi(rootIdMatcher: Matcher<View>, rootClassMatcher: Matcher<View>) {
 
-    val interaction = onView(
+   private val interaction = onView(
         allOf(
             withId(R.id.textNumber),
             isAssignableFrom(TextView::class.java),
@@ -32,10 +32,10 @@ class TextViewUi(rootIdMatcher: Matcher<View>, rootClassMatcher: Matcher<View>) 
             .check(matches(withText("0")))
     }
 
-    fun incrementStart() {
+    fun incrementStart(value: Int) {
         interaction
             .check(matches(withTextColor(R.color.black)))
-            .check(matches(withText(click().toString())))
+            .check(matches(withText(value.toString())))
     }
 
     fun finish() {

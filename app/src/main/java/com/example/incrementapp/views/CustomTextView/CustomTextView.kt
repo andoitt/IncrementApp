@@ -24,7 +24,7 @@ class CustomTextView : androidx.appcompat.widget.AppCompatTextView, UpdateText {
     }
 
     override fun updateUi(incrementValue: Int, color: Int) {
-        this.setText(incrementValue)
+
         this.text = incrementValue.toString()
         this.setTextColor(color)
     }

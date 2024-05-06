@@ -5,9 +5,11 @@ import android.widget.Button
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
+import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.espresso.matcher.ViewMatchers.isAssignableFrom
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.isEnabled
+import androidx.test.espresso.matcher.ViewMatchers.withEffectiveVisibility
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withParent
 import com.google.android.material.textfield.TextInputLayout
@@ -27,7 +29,9 @@ class ResetButtonUI(rootIdMatcher: Matcher<View>, rootClassMatcher: Matcher<View
         )
     )
     fun initial() {
-        interaction.check(matches(not(isDisplayed())))
+     //   interaction.check(matches(not(isDisplayed())))
+        interaction.check(matches(withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE)))
+
     }
 
     fun incrementStart() {

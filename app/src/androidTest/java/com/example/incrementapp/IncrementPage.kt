@@ -36,8 +36,8 @@ class IncrementPage {
     }
 
 
-    fun checkStateIncrementStart(text: String) {
-        textView.incrementStart()
+    fun checkStateIncrementStart(value: Int) {
+        textView.incrementStart(value = value)
         incrementButton.incrementStart()
         resetButton.incrementStart()
     }
