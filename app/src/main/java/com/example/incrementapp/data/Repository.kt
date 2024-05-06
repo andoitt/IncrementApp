@@ -11,21 +11,29 @@ interface Repository {
         private val permanentStorage: IntCache
     ) : Repository {
         override fun getIncrement(): Int {
-            TODO("Not yet implemented")
+            return permanentStorage.read(KEY, DEFAULT)
         }
 
         override fun isMax(): Boolean {
-            TODO("Not yet implemented")
+            val value = permanentStorage.read(KEY, DEFAULT)
+            return value == COUNTER_MAX_VALUE
         }
 
         override fun increment() {
-            TODO("Not yet implemented")
+            val lastValue = permanentStorage.read(KEY, DEFAULT)
+            val newValue = lastValue + 1
+            permanentStorage.save(newValue,KEY)
         }
 
         override fun reset() {
-            TODO("Not yet implemented")
+            permanentStorage.save(INITIAL_VALUE, KEY)
         }
 
+        companion object {
+            const val KEY = "key"
+            const val COUNTER_MAX_VALUE = 10
+            const val DEFAULT = 0
+            const val INITIAL_VALUE = 0
+        }
     }
-
 }

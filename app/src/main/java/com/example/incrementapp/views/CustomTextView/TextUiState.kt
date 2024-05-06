@@ -16,6 +16,6 @@ interface TextUiState {
     object Initial : Abstract(0, R.color.green)
 
     data class Increment(private val value: Int) : Abstract(incrementValue = value, R.color.black)
-    object Reset : Abstract(10,R.color.red)
+    object Finish : Abstract(10,R.color.red)
 
 }
