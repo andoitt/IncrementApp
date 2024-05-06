@@ -23,7 +23,6 @@ class MainActivity : AppCompatActivity() {
                 incrementButton = binding.incrementButton,
                 resetButton = binding.resetButton,
                 textNumber = binding.textNumber
-
             )
         }
 

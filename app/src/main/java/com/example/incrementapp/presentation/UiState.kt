@@ -12,7 +12,6 @@ import com.example.incrementapp.views.CustomTextView.UpdateText
 
 interface UiState {
     fun update(
-
         incrementButton: UpdateIncrementButton,
         resetButton: UpdateResetButton,
         textNumber: UpdateText

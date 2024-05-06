@@ -6,25 +6,40 @@ import com.example.incrementapp.presentation.UiState
 import org.junit.Test
 
 import org.junit.Assert.*
+import org.junit.Before
 
 /**
  *
  */
 class IncrementViewModelTest {
+
+    private lateinit var viewModel: IncrementViewModel
+    private lateinit var repository: FakeRepository
+
+    private lateinit var actual: UiState
+    private lateinit var expected: UiState
+
+
+    @Before
+    fun setup() {
+        repository = FakeRepository()
+        viewModel = IncrementViewModel(
+            repository = repository
+        )
+    }
+
     @Test
     fun caseNumberOne() {
 
-        val viewModel: IncrementViewModel = IncrementViewModel()
-        lateinit var repository: FakeRepository
 
-        var actual: UiState = viewModel.init(firstTime = true)
-        var expected: UiState = UiState.Initial
+        actual = viewModel.init(firstTime = true)
+        expected = UiState.Initial
 
         assertEquals(expected, actual)
 
-        repeat(9){
+        repeat(9) {
             actual = viewModel.increment()
-            expected = UiState.IncrementStart( + 1)
+            expected = UiState.IncrementStart(it + 1)
             assertEquals(expected, actual)
         }
 
@@ -38,11 +53,21 @@ class IncrementViewModelTest {
     }
 }
 
-class FakeRepository: Repository {
+class FakeRepository : Repository {
 
     private var counter: Int = 0
 
+    override fun isMax(): Boolean = counter == 10
 
 
+    override fun increment() {
+        counter++
+    }
+
+    override fun reset() {
+        counter = 0
+    }
+
+    override fun getIncrement(): Int = counter
 
 }
